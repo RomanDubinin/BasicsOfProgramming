@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using TaskSchedule;
 
 namespace TaskGenerator
 {
@@ -19,14 +20,14 @@ namespace TaskGenerator
 
             var tasks = Enumerable
                 .Range(0, tasksCount)
-                .Select(x => new
+                .Select(x => new Task
                 {
-                    start = uniformRandom.Next(latestStart),
-                    duration = (int) normalRandom.GetNextDouble(expectationOfDuration, dispersionOfDuration)
+                    Start = uniformRandom.Next(latestStart),
+                    Duration = (int) normalRandom.GetNextDouble(expectationOfDuration, dispersionOfDuration)
                 })
                 .ToArray();
 
-            File.WriteAllText("tasks.txt", JsonConvert.SerializeObject(tasks, Formatting.Indented));
+            File.WriteAllText("../../../tasks.txt", JsonConvert.SerializeObject(tasks, Formatting.Indented));
         }
 
         static void Sample()
