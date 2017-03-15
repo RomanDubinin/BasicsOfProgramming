@@ -4,6 +4,6 @@
     {
         public Task Task;
         public int Id;
-        public int RemainingTime;
+        public int PassedTime;
     }
 }
