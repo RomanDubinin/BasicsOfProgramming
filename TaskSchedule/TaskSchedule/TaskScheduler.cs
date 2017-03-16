@@ -61,15 +61,13 @@ namespace TaskSchedule
 
         private ExtendedTask GetMostPriorityExtendedTask(List<ExtendedTask> tasks)
         {
-            return tasks.Aggregate((curMax, x) =>
-                PercentOfProcessTime(curMax) >= PercentOfProcessTime(x) ? curMax : x);
+            return tasks.Aggregate((curMin, x) =>
+                PercentOfProcessTime(curMin) <= PercentOfProcessTime(x) ? curMin : x);
         }
 
         private double PercentOfProcessTime(ExtendedTask extendedTask)
         {
-            if (extendedTask.PassedTime != 0)
-                return (CurrentTick - extendedTask.Task.Start) / (double)(extendedTask.PassedTime);
-            return (CurrentTick - extendedTask.Task.Start) / 0.1;
+            return (double)(extendedTask.PassedTime) / (CurrentTick - extendedTask.Task.Start);
         }
     }
 }
