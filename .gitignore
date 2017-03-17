@@ -13,3 +13,5 @@ _ReSharper.*
 *.dll
 **/packages/*
 tasks.txt
+schedule1.txt
+schedule2.txt

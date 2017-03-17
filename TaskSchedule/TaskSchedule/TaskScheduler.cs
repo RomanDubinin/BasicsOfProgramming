@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,13 +9,15 @@ namespace TaskSchedule
     {
         private int CurrentTick;
         
-        public List<int?> CreateSchedule(List<Task> tasks)
+        public Tuple<List<int>, Dictionary<Task, List<int>>> CreateSchedule(List<Task> tasks)
         {
             var data = ExtendTaskData(tasks)
                 .OrderBy(x => x.Task.Start)
                 .ToList();
 
-            var processorSchedule = new List<int?>();
+            var processorSchedule = new List<int>();
+            var processorSchedule2 = InitializeShedule(data);
+
             var receivedTasks = new List<ExtendedTask>();
 
             CurrentTick = 0;
@@ -28,7 +31,7 @@ namespace TaskSchedule
 
                 if (receivedTasks.Count == 0)
                 {
-                    processorSchedule.Add(null);
+                    processorSchedule.Add(-1);
                     CurrentTick++;
                     continue;
                 }
@@ -36,6 +39,7 @@ namespace TaskSchedule
                 var currentTask = GetMostPriorityExtendedTask(receivedTasks);
 
                 processorSchedule.Add(currentTask.Id);
+                processorSchedule2[currentTask.Task].Add(CurrentTick);
                 currentTask.PassedTime++;
 
                 if (currentTask.PassedTime == currentTask.Task.Duration)
@@ -43,6 +47,16 @@ namespace TaskSchedule
 
                 CurrentTick++;
             }
+            return Tuple.Create(processorSchedule, processorSchedule2);
+        }
+
+        private Dictionary<Task, List<int>> InitializeShedule(List<ExtendedTask> extendedTasks)
+        {
+            var processorSchedule = new Dictionary<Task, List<int>>();
+
+            foreach (var extendedTask in extendedTasks)
+                processorSchedule.Add(extendedTask.Task, new List<int>());
+
             return processorSchedule;
         }
 
