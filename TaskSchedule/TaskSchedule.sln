@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduler", "TaskSchedu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{0F04E2AE-4BD9-4CCC-9FA2-9ADD282F7490}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleMetric", "ScheduleMetric\ScheduleMetric.csproj", "{94410D47-CE28-40F7-873A-66226B4C9911}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0F04E2AE-4BD9-4CCC-9FA2-9ADD282F7490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F04E2AE-4BD9-4CCC-9FA2-9ADD282F7490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F04E2AE-4BD9-4CCC-9FA2-9ADD282F7490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94410D47-CE28-40F7-873A-66226B4C9911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94410D47-CE28-40F7-873A-66226B4C9911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94410D47-CE28-40F7-873A-66226B4C9911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94410D47-CE28-40F7-873A-66226B4C9911}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

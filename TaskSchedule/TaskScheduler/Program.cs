@@ -26,11 +26,6 @@ namespace TaskScheduler
 
             File.WriteAllText("../../../schedule1.txt", JsonConvert.SerializeObject(schedule.Item1, Formatting.Indented));
             File.WriteAllText("../../../schedule2.txt", JsonConvert.SerializeObject(keyValuePairs, Formatting.Indented));
-
-            var tasks1 =
-                (KeyValuePair<Task, int[]>[])
-                JsonConvert.DeserializeObject(File.ReadAllText("../../../schedule2.txt"),
-                    typeof(KeyValuePair<Task, int[]>[]));
         }
     }
 }
