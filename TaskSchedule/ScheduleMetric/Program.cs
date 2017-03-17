@@ -21,7 +21,7 @@ namespace ScheduleMetric
 
             foreach (var pair in schedule)
             {
-                relationOfDurationToActualTicks.Add(pair.Key.Duration / (double)(pair.Value.Last() - pair.Key.Start));
+                relationOfDurationToActualTicks.Add(pair.Key.Duration / (double)(pair.Value.Last() - pair.Key.Start + 1));
                 timeOfWaitingToStart.Add(pair.Value.First() - pair.Key.Start);
             }
             Console.WriteLine("Duration / Actual ticks:");
